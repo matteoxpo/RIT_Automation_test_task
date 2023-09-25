@@ -1,4 +1,5 @@
 ﻿#nullable enable
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -20,11 +21,18 @@ namespace Data.Repositories
 
         public async Task OpenAsync()
         {
-            if (_globalRepositoryInstance != null) await _globalRepositoryInstance._sqlConnection.OpenAsync();
+            if (_globalRepositoryInstance != null)
+            {
+                await _globalRepositoryInstance._sqlConnection.OpenAsync();
+            }
         }
         
         public void Open()
         {
+            if (_globalRepositoryInstance is null)
+            {
+                throw new ArgumentNullException("");
+            }
             _globalRepositoryInstance._sqlConnection.Open();
         }
 

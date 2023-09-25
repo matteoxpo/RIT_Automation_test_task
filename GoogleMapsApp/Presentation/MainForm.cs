@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using Data.Repositories;
 using Domain;
@@ -19,15 +20,16 @@ namespace Presentation
             try
             {
                 _mapMarkerRepository = MapMarkerRepository.GetInstance(bdConnectionConfiguration);
-                _mapMarkerRepository.Open();
+                 _mapMarkerRepository.Open();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Ошибка подключения к бд: " + ex.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+           
         }
         
-        private void gMapControl_Load(object sender, EventArgs e)
+        private  void gMapControl_Load(object sender, EventArgs e)
         {
             GMap.NET.GMaps.Instance.Mode = GMap.NET.AccessMode.ServerOnly; 
             gMapControl.MapProvider = GMap.NET.MapProviders.GoogleMapProvider.Instance;
@@ -41,9 +43,14 @@ namespace Presentation
             gMapControl.ShowCenter = false; 
             gMapControl.ShowTileGridLines = false;
             
+          
+            
             gMapControl.Overlays.Add(
                 CreateGoogleMarkers(_mapMarkerRepository.Read())
                 );
+            
+            
+           
         }
 
         private GMapOverlay CreateGoogleMarkers(IEnumerable<MapMarker> markers)

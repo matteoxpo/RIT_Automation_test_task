@@ -28,6 +28,10 @@ namespace Presentation
 
         #region
 
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
         private void InitializeComponent()
         {
             this.gMapControl = new GMap.NET.WindowsForms.GMapControl();
@@ -57,7 +61,7 @@ namespace Presentation
             this.gMapControl.ScaleMode = GMap.NET.WindowsForms.ScaleModes.Integer;
             this.gMapControl.SelectedAreaFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(65)))), ((int)(((byte)(105)))), ((int)(((byte)(225)))));
             this.gMapControl.ShowTileGridLines = false;
-            this.gMapControl.Size = new System.Drawing.Size(776, 332);
+            this.gMapControl.Size = new System.Drawing.Size(776, 426);
             this.gMapControl.TabIndex = 0;
             this.gMapControl.Zoom = 0D;
             this.gMapControl.OnMarkerEnter += new GMap.NET.WindowsForms.MarkerEnter(this.gMapControl_OnMarkerEnter);
